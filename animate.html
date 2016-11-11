@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reel</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+<link rel="stylesheet" href="css/bootstrap-theme.min.css" >
+<script src="js/jquery-3.1.1.min.js" ></script>
+<script src="js/bootstrap.min.js" ></script>
+<script src="js/reel.js" ></script>
+
+<style>
+#canvas {
+	border: 1px solid DarkSlateBlue;
+}
+</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<canvas id="canvas" width="500" height="300"></canvas>
+			</div>
+			<div class="col-md-4">
+				The 3 coloured circles represent 3 dancers in a reel. 
+				The red dancer is facing the pink dancer, the blue dancer is facing the other two.
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function() {
+			reel.init([115, 100, 85]);
+			reel.render();
+		});
+	</script>
+</body>
+</html>

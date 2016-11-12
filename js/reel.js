@@ -139,7 +139,11 @@ var reel = {
 		}
 	},
 	
-	startFrom: function(timeCount) {
+	
+	startFrom: function(timeCount, places) {
+		for(var i = 0; i< places.length; i++) {
+			this._dancers[i].place(places[i]);
+		}
 		this._timeCount = timeCount;
 	},
 	render: function() {

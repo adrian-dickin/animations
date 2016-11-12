@@ -43,12 +43,12 @@ var lessonMap = {
 		previous: 'lesson3',
 		show: function() {
 			reel.init([115, 100, 85]);
-			reel.startFrom(200);
+			reel.startFrom(200, [2,3,0]);
 			reel.render();
 		},
 		play: function() {
 			reel.init([115, 100, 85]);
-			reel.startFrom(200);
+			reel.startFrom(200, [2,3,0]);
 			reel.animate(400);
 		}
 	}

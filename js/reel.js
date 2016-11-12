@@ -57,7 +57,7 @@ function Dancer(sectionIndex, colour, speeds, who) {
 		
 		ctx.font = '30px serif';
 		ctx.fillStyle = "white";	
-		ctx.fillText(this._who, this._position.x - 8, this._position.y + 10); 
+		ctx.fillText((this._who + 1), this._position.x - 8, this._position.y + 10); 
 	};
 	
 	this.place(sectionIndex);
@@ -137,6 +137,10 @@ var reel = {
 				reel._doFrame();
 			});
 		}
+	},
+	
+	startFrom: function(timeCount) {
+		this._timeCount = timeCount;
 	},
 	render: function() {
 		this._dancers.forEach(function(dancer) {

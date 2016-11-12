@@ -1,8 +1,9 @@
 
-function Dancer(sectionIndex, colour, speeds) {
+function Dancer(sectionIndex, colour, speeds, who) {
 	this._speeds = speeds;
 	this._colour = colour;
 	this._twoBars = 0;
+	this._who = who;
 	
 	this._sections = [
 		{angle: Math.PI, stepSign: 1, centreIndex: 0},
@@ -53,6 +54,10 @@ function Dancer(sectionIndex, colour, speeds) {
 		ctx.arc(this._position.x, this._position.y, 20, 0.0, 2.0 * Math.PI);
 		ctx.fill();
 		ctx.stroke();
+		
+		ctx.font = '30px serif';
+		ctx.fillStyle = "white";	
+		ctx.fillText(this._who, this._position.x - 8, this._position.y + 10); 
 	};
 	
 	this.place(sectionIndex);
@@ -72,25 +77,25 @@ var reel = {
 		this._timeCount = 0;
 		
 		var colours = [
-			"#ff0000",
-			"#ffe0e0",
-			"#e0e0ff"];
+			"#e00000",
+			"#00e000",
+			"#0000e0"];
 		
-		this._makeDancer(0, colours[0], [1, 1, 1, 1]);
-		this._makeDancer(3, colours[1], [1, 1, 1, 1]);
-		this._makeDancer(2, colours[2], [0, 2, 0, 2]);
+		this._makeDancer(0, colours[0], [1, 1, 1, 1], 0);
+		this._makeDancer(3, colours[1], [1, 1, 1, 1], 1);
+		this._makeDancer(2, colours[2], [0, 2, 0, 2], 2);
 	},
 	
 	getFullReelCount: function() {
 		return this._counts[1];
 	},
 	
-	_makeDancer: function(section, colour, countIndexes) {
+	_makeDancer: function(section, colour, countIndexes, who) {
 		var counts = [];
 		countIndexes.forEach(function(countIndex) {
 			counts.push(reel._counts[countIndex]);
 		});
-		this._dancers.push(new Dancer(section, colour, counts));
+		this._dancers.push(new Dancer(section, colour, counts, who));
 	},
 	
 	calcAndMove: function() {
@@ -114,11 +119,12 @@ var reel = {
 	_drawPath: function(ctx, path) {
 		ctx.fillStyle = '#a0a0a0';
 		ctx.strokeStyle = '#a0a0a0';
+		var who = 1;
 		path.forEach(function(xy) {
 			ctx.beginPath();
 			ctx.arc(xy.x, xy.y, 3, 0.0, 2.0 * Math.PI);
 			ctx.fill();
-			ctx.stroke();	
+			ctx.stroke();
 		});	
 	},
 	

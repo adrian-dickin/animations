@@ -8,6 +8,7 @@
 <script src="js/jquery-3.1.1.min.js" ></script>
 <script src="js/bootstrap.min.js" ></script>
 <script src="js/reel.js" ></script>
+<script src="js/lesson.js" ></script>
 
 <style>
 #canvas {
@@ -18,20 +19,45 @@
 </head>
 <body>
 	<div class="container">
+		<div class="page-header">
+	  		<h1>Reels <small>basic reel of three</small></h1>
+		</div>
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-5 col-sm-3">
+				<p>The 3 coloured circles represent 3 dancers in a reel. </p>
+				<p>The red dancer is facing the green dancer, the blue dancer is facing the other two.</p>
+				<p>When you play the animation notice how 
+				<ul>
+					<li>the vertical direction alternates, red and blue match while green is the opposite</li>
+					<li>they all follow the same path</li>
+					<li>they keep the same distance</li>
+				</ul>
+				</p>
+				<p>Press <i>Play</i> to see the path the red dancer takes.</p>
+				<button id="play" type="button" class="btn btn-primary btn-lg">Play</button>
+			</div>
+			<div class="col-md-7 col-sm-9">
 				<canvas id="canvas" width="500" height="300"></canvas>
 			</div>
-			<div class="col-md-4">
-				The 3 coloured circles represent 3 dancers in a reel. 
-				The red dancer is facing the pink dancer, the blue dancer is facing the other two.
+		</div>
+		<div class="row">
+			<div class="col-md-5 col-sm-3">
+				<div class="well well-sm">
+					<div class="row">
+						<div class="col-md-6">
+							<button id="previous" type="button" class="btn btn-default">Previous</button>
+						</div>
+						<div class="col-md-6 text-right">
+							<button id="next" type="button" class="btn btn-default">Next</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	<script>
 		$(function() {
-			reel.init([115, 100, 85]);
-			reel.render();
+			lessons.init();
 		});
 	</script>
 </body>

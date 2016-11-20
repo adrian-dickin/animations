@@ -49,11 +49,9 @@ var lessonMap = {
 			reel.startFrom(200, [2,1,0]);
 		},
 		show: function() {	
-			//reel.startFrom(200, [2,3,0]);
 			reel.render();
 		},
 		play: function() {
-			//reel.startFrom(200, [2,3,0]);
 			reel.animate(400);
 		}
 	}

@@ -4,6 +4,9 @@ function Dancer(sectionIndex, colour, speeds, who) {
 	this._colour = colour;
 	this._twoBars = 0;
 	this._who = who;
+	this.radius = 110.0;
+	this.cx = 140;
+	this.cy = 140;
 	
 	this._sections = [
 		{angle: Math.PI, stepSign: 1, centreIndex: 0},
@@ -22,11 +25,10 @@ function Dancer(sectionIndex, colour, speeds, who) {
 		this._count = 0;
 		this._centreIndex = section.centreIndex;
 	};
-	
+		
 	this.calcPosition = function() {
-	    var rad = 110.0;
-		var x = 140 + 2.0 * rad * this._centreIndex + rad * Math.cos(this._angle);
-		var y = 140 + rad * Math.sin(this._angle);
+		var x = this.cx + 2.0 * this.radius * this._centreIndex + this.radius * Math.cos(this._angle);
+		var y = this.cy + this.radius * Math.sin(this._angle);
 		this._position = {x: x, y: y};	
 	};
 	
@@ -114,8 +116,9 @@ var reel = {
 	},
 	
 	_draw: function() {
-		var ctx = document.getElementById('canvas').getContext('2d');
-		ctx.clearRect(0, 0, 500, 300);
+		var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d');
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		this._drawPath(ctx, this._path);
 		this._dancers.forEach(function(dancer) {
 			dancer.draw(ctx);
@@ -126,7 +129,6 @@ var reel = {
 	_drawPath: function(ctx, path) {
 		ctx.fillStyle = '#a0a0a0';
 		ctx.strokeStyle = '#a0a0a0';
-		/*var who = 1;*/
 		path.forEach(function(xy) {
 			ctx.beginPath();
 			ctx.arc(xy.x, xy.y, 3, 0.0, 2.0 * Math.PI);
@@ -147,7 +149,6 @@ var reel = {
 			this._endCallback();
 		}
 	},
-	
 	
 	startFrom: function(timeCount, places) {
 		for(var i = 0; i< places.length; i++) {

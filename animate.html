@@ -12,7 +12,8 @@
 
 <style>
 #canvas {
-	border: 1px solid DarkSlateBlue;
+	border: 1px solid lightGray;
+	background: #f0f0ff;
 }
 .lesson-text {
 	display:none;
@@ -28,12 +29,14 @@
 		<div class="row">
 			<div class="col-md-5 col-xs-12">
 				<div id="lesson1" class="lesson-text">
-					<p>The 3 coloured circles represent 3 dancers in a reel. </p>
+					<p>The 3 coloured circles represent 3 dancers in a right shoulder reel. </p>
 					<p>The red 1 dancer is facing the green 2 dancer, the blue 3 dancer is facing the other two.</p>
 					<p>When you play the animation notice how 
 					<ul>
 						<li>the vertical direction alternates, 1 and 3 match while 2 is the opposite</li>
 						<li>they all follow the same path</li>
+						<li>1 and 2 start to pass by their right shoulder, they move towards each other and to their left.</li>
+						<li>3 starts moving towards the others and moves to the right.</li>
 					</ul>
 					</p>
 					<p>Press <i>Play</i> to see the path the red dancer takes.</p>
@@ -58,7 +61,7 @@
 			</div>
 			
 			<div class="col-md-7 col-xs-12">
-				<canvas id="canvas" width="500" height="300"></canvas>
+				<canvas id="canvas" width="500" height="290"></canvas>
 			</div>
 		</div>
 		<div class="row">

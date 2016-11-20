@@ -26,13 +26,13 @@
 	  		<h1>Reels <small>basic reel of three</small></h1>
 		</div>
 		<div class="row">
-			<div class="col-md-5 col-sm-3">
+			<div class="col-md-5 col-xs-12">
 				<div id="lesson1" class="lesson-text">
 					<p>The 3 coloured circles represent 3 dancers in a reel. </p>
-					<p>The red dancer is facing the green dancer, the blue dancer is facing the other two.</p>
+					<p>The red 1 dancer is facing the green 2 dancer, the blue 3 dancer is facing the other two.</p>
 					<p>When you play the animation notice how 
 					<ul>
-						<li>the vertical direction alternates, red and blue match while green is the opposite</li>
+						<li>the vertical direction alternates, 1 and 3 match while 2 is the opposite</li>
 						<li>they all follow the same path</li>
 					</ul>
 					</p>
@@ -41,7 +41,7 @@
 				
 				<div id="lesson2" class="lesson-text">
 					<p>The person at the back of the reel is the one who is looking at the back of the person in front of them.</p>
-					<p>For the reel to work the person at the back of the reel (blue dancer) must change their speed, if they don't then they will collide.</p>
+					<p>For the reel to work the person at the back of the reel (blue 3 dancer) must change their speed, if they don't then they will collide with red 1.</p>
 					<p>Press <i>Play</i> to see the collision.</p>
 				</div>
 				
@@ -51,27 +51,28 @@
 				</div>
 				
 				<div id="lesson4" class="lesson-text">
-					<p>On the way back the same situation occurs, the dancer at the back must hold back.</p>
+					<p>The 2nd half of the reel is the opposite of the 1st half. Red 1 and Green 2 are still facing each other with blue 3 facing both of them, but the order is reversed.</p>
+					<p>Here Blue 3 must hold back again..</p>
 					<p>Press <i>Play</i> to see the 2nd half of the reel.</p>
 				</div>
 			</div>
 			
-			<div class="col-md-7 col-sm-9">
+			<div class="col-md-7 col-xs-12">
 				<canvas id="canvas" width="500" height="300"></canvas>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-5 col-sm-3">
+			<div class="col-md-5 col-sm-12">
 				<div class="well well-sm">
 					<div class="row">
-						<div class="col-md-4">
-							<button id="previous" type="button" class="btn btn-default btn-lg">Previous</button>
+						<div class="col-xs-4">
+							<button id="previous" type="button" class="btn btn-default btn-block btn-lg">Previous</button>
 						</div>
-						<div class="col-md-4 text-center">
-							<button id="play" type="button" class="btn btn-primary btn-lg">Play</button>
+						<div class="col-xs-4 text-center">
+							<button id="play" type="button" class="btn btn-primary btn-block btn-lg">Play</button>
 						</div>
-						<div class="col-md-4 text-right">
-							<button id="next" type="button" class="btn btn-default btn-lg">Next</button>
+						<div class="col-xs-4 text-right">
+							<button id="next" type="button" class="btn btn-default btn-block btn-lg">Next</button>
 						</div>
 					</div>
 				</div>

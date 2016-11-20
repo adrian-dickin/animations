@@ -69,12 +69,15 @@ var reel = {
 	_dancers: [],
 	_counts: [],
 	_timeCount: 0,
+	_whoToPlot: 0,
+	_endCallback: null,
 	
-	init: function(counts) {
+	init: function(counts, whoToPlot) {
 		this._path = [];
 		this._dancers = [];
 		this._counts = counts;
 		this._timeCount = 0;
+		this._whoToPlot = whoToPlot;
 		
 		var colours = [
 			"#e00000",
@@ -84,6 +87,10 @@ var reel = {
 		this._makeDancer(0, colours[0], [1, 1, 1, 1], 0);
 		this._makeDancer(3, colours[1], [1, 1, 1, 1], 1);
 		this._makeDancer(2, colours[2], [0, 2, 0, 2], 2);
+	},
+	
+	setEndCallback: function(endCallback) {
+		this._endCallback = endCallback;
 	},
 	
 	getFullReelCount: function() {
@@ -103,7 +110,7 @@ var reel = {
 			dancer.calcPosition();
 			dancer.updatePosition();
 		});
-		this._path.push(this._dancers[0].getPosition());
+		this._path.push(this._dancers[this._whoToPlot].getPosition());
 	},
 	
 	_draw: function() {
@@ -119,7 +126,7 @@ var reel = {
 	_drawPath: function(ctx, path) {
 		ctx.fillStyle = '#a0a0a0';
 		ctx.strokeStyle = '#a0a0a0';
-		var who = 1;
+		/*var who = 1;*/
 		path.forEach(function(xy) {
 			ctx.beginPath();
 			ctx.arc(xy.x, xy.y, 3, 0.0, 2.0 * Math.PI);
@@ -136,6 +143,8 @@ var reel = {
 			window.requestAnimationFrame(function() {
 				reel._doFrame();
 			});
+		} else {
+			this._endCallback();
 		}
 	},
 	

@@ -18,20 +18,38 @@ var Lesson = function () {
 	}
 
 	_createClass(Lesson, [{
+		key: 'firstLast',
+		value: function firstLast(first, last) {
+			this._first = first;
+			this._last = last;
+			console.log(this._first + ' ' + this._last);
+		}
+	}, {
 		key: 'prep',
 		value: function prep() {
+			var _this = this;
+
 			var reel = new Reel(this._counts, this._whoToPlot);
 			if (this._timeCount !== undefined) {
 				reel.startFrom(this._timeCount, this._places);
 			}
 			this._reel = reel;
 			this._reel.endCallback = function () {
-				$('#play, #prev, #next').prop('disabled', false);
+				return _this.showButtons;
 			};
+		}
+	}, {
+		key: 'showButtons',
+		value: function showButtons() {
+			console.log('showButtons ' + this._first);
+			$('#previous').prop('disabled', this._first);
+			$('#next').prop('disabled', this._last);
 		}
 	}, {
 		key: 'show',
 		value: function show() {
+			console.log('show');
+			this.showButtons();
 			this._reel.render();
 		}
 	}, {
@@ -49,8 +67,10 @@ var Lessons = function () {
 		_classCallCheck(this, Lessons);
 
 		this._lessons = [new Lesson([115, 100, 85], 0, 400), new Lesson([100, 100, 100], 0, 82), new Lesson([115, 100, 85], 2, 200), new Lesson([115, 100, 85], 2, 400, 200, [2, 1, 0])];
-		/*		this._lessonNumber = 0;
-  		this._currentLesson = this._lessons[this._lessonNumber];*/
+
+		this._lessons.forEach(function (lesson, index, lessons) {
+			lesson.firstLast(index === 0, index === lessons.length - 1);
+		});
 
 		this._show(0);
 		$('#play').click($.proxy(this._play, this));
@@ -72,12 +92,8 @@ var Lessons = function () {
 			this._lessonNumber = which;
 			this._currentLesson = this._lessons[this._lessonNumber];
 			$('#lesson' + this._lessonNumber).show();
-			console.log('#lesson' + this._lessonNumber);
 			this._currentLesson.prep();
 			this._currentLesson.show();
-
-			$('#previous').prop('disabled', which > 0);
-			$('#next').prop('disabled', which < this._lessons.length - 1);
 		}
 	}, {
 		key: '_next',

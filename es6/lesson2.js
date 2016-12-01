@@ -7,7 +7,13 @@ class Lesson {
 		this._whoToPlot = whoToPlot;
 		this._endTimeCount = endTimeCount;
 		this._timeCount = timeCount;
-		this._places = places;
+		this._places = places;		
+	}
+	
+	firstLast(first, last) {
+		this._first = first;
+		this._last = last;
+		console.log(this._first + ' ' + this._last);
 	}
 	
 	prep() {
@@ -16,12 +22,17 @@ class Lesson {
 			reel.startFrom(this._timeCount, this._places);
 		}
 		this._reel = reel;
-		this._reel.endCallback = function() {
-			$('#play, #prev, #next').prop('disabled', false);
-		};
+		this._reel.endCallback = () => this.showButtons;
 	}
 
+	showButtons() {
+		$('#previous').prop('disabled', this._first);
+		$('#play').prop('disabled', false);
+		$('#next').prop('disabled', this._last);
+	}
+	
 	show() {
+		this.showButtons();
 		this._reel.render();
 	}
 	
@@ -38,8 +49,10 @@ class Lessons {
 			new Lesson([115, 100, 85], 2, 200),
 			new Lesson([115, 100, 85], 2, 400,   200, [2,1,0])
 		];
-/*		this._lessonNumber = 0;
-		this._currentLesson = this._lessons[this._lessonNumber];*/
+		
+		this._lessons.forEach(function(lesson, index, lessons) {
+			lesson.firstLast(index === 0, index === lessons.length - 1);
+		});
 		
 		this._show(0);
 		$('#play').click($.proxy(this._play, this));
@@ -60,9 +73,6 @@ class Lessons {
 		$('#lesson' + this._lessonNumber).show();
 		this._currentLesson.prep();
 		this._currentLesson.show();	
-		
-		$('#previous').prop('disabled', which > 0);
-		$('#next').prop('disabled', which < this._lessons.length - 1);
 	}
 	
 	_next() {

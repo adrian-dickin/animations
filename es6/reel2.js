@@ -12,7 +12,6 @@ class ReelDancer {
 	
 	/* Move onto a specific section. */
 	place(sectionIndex) {
-	console.log('PLACE');
 		this._sectionIndex = sectionIndex;
 		let section = this._sections[sectionIndex];
 		this._angle = section.angle;
@@ -25,8 +24,6 @@ class ReelDancer {
 	calcPosition() {
 		let x = this.cx + 2.0 * this.radius * this._centreIndex + this.radius * Math.cos(this._angle);
 		let y = this.cy + this.radius * Math.sin(this._angle);
-		console.log(x);
-		console.log(this.cx + ' ' + this.radius + ' ' + this._centreIndex);
 		this._position = {x, y};
 	}
 	

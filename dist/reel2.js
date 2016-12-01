@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -25,9 +25,8 @@ var ReelDancer = function () {
 
 
 	_createClass(ReelDancer, [{
-		key: 'place',
+		key: "place",
 		value: function place(sectionIndex) {
-			console.log('PLACE');
 			this._sectionIndex = sectionIndex;
 			var section = this._sections[sectionIndex];
 			this._angle = section.angle;
@@ -37,16 +36,14 @@ var ReelDancer = function () {
 			this._centreIndex = section.centreIndex;
 		}
 	}, {
-		key: 'calcPosition',
+		key: "calcPosition",
 		value: function calcPosition() {
 			var x = this.cx + 2.0 * this.radius * this._centreIndex + this.radius * Math.cos(this._angle);
 			var y = this.cy + this.radius * Math.sin(this._angle);
-			console.log(x);
-			console.log(this.cx + ' ' + this.radius + ' ' + this._centreIndex);
 			this._position = { x: x, y: y };
 		}
 	}, {
-		key: 'updatePosition',
+		key: "updatePosition",
 		value: function updatePosition() {
 			this._count += 1;
 			this._angle += this._step;
@@ -60,7 +57,7 @@ var ReelDancer = function () {
 			}
 		}
 	}, {
-		key: 'draw',
+		key: "draw",
 		value: function draw(ctx) {
 			ctx.beginPath();
 			ctx.fillStyle = this._colour;
@@ -68,13 +65,12 @@ var ReelDancer = function () {
 			ctx.arc(this._position.x, this._position.y, 20, 0.0, 2.0 * Math.PI);
 			ctx.fill();
 			ctx.stroke();
-			console.log(this);
 			ctx.font = '30px serif';
 			ctx.fillStyle = "white";
 			ctx.fillText(this._who + 1, this._position.x - 8, this._position.y + 10);
 		}
 	}, {
-		key: 'position',
+		key: "position",
 		get: function get() {
 			return this._position;
 		}
@@ -124,7 +120,7 @@ var Reel = function () {
 	}
 
 	_createClass(Reel, [{
-		key: '_makeDancer',
+		key: "_makeDancer",
 		value: function _makeDancer(section, colour, countIndexes, who) {
 			var that = this;
 			var counts = countIndexes.map(function (countIndex) {
@@ -133,7 +129,7 @@ var Reel = function () {
 			this._dancers.push(new RshReelDancer(section, colour, counts, who));
 		}
 	}, {
-		key: 'calcAndMove',
+		key: "calcAndMove",
 		value: function calcAndMove() {
 			this._dancers.forEach(function (dancer) {
 				dancer.calcPosition();
@@ -142,7 +138,7 @@ var Reel = function () {
 			this._path.push(this._dancers[this._whoToPlot].position);
 		}
 	}, {
-		key: '_draw',
+		key: "_draw",
 		value: function _draw() {
 			var canvas = document.getElementById('canvas');
 			var ctx = canvas.getContext('2d');
@@ -153,7 +149,7 @@ var Reel = function () {
 			});
 		}
 	}, {
-		key: '_drawPath',
+		key: "_drawPath",
 		value: function _drawPath(ctx, path) {
 			ctx.fillStyle = '#a0a0a0';
 			ctx.strokeStyle = '#a0a0a0';
@@ -165,10 +161,9 @@ var Reel = function () {
 			});
 		}
 	}, {
-		key: '_doFrame',
+		key: "_doFrame",
 		value: function _doFrame() {
 			var that = this;
-			console.log(this);
 			this.calcAndMove();
 			this._draw();
 			this._timeCount += 1;
@@ -181,7 +176,7 @@ var Reel = function () {
 			}
 		}
 	}, {
-		key: 'startFrom',
+		key: "startFrom",
 		value: function startFrom(timeCount, places) {
 			for (var i = 0; i < places.length; i++) {
 				this._dancers[i].place(places[i]);
@@ -189,7 +184,7 @@ var Reel = function () {
 			this._timeCount = timeCount;
 		}
 	}, {
-		key: 'render',
+		key: "render",
 		value: function render() {
 			this._dancers.forEach(function (dancer) {
 				dancer.calcPosition();
@@ -197,7 +192,7 @@ var Reel = function () {
 			this._draw();
 		}
 	}, {
-		key: 'animate',
+		key: "animate",
 		value: function animate(endTimeCount) {
 			var that = this;
 			this._endTimeCount = endTimeCount;
@@ -208,7 +203,7 @@ var Reel = function () {
 			console.log('post');
 		}
 	}, {
-		key: 'endCallback',
+		key: "endCallback",
 		set: function set(endCallback) {
 			this._endCallback = endCallback;
 		}
@@ -218,109 +213,4 @@ var Reel = function () {
 }();
 
 ;
-
-/*
-var reel = {
-	_path: [],
-	_dancers: [],
-	_counts: [],
-	_timeCount: 0,
-	_whoToPlot: 0,
-	_endCallback: null,
-	
-	init: function(counts, whoToPlot) {
-		this._path = [];
-		this._dancers = [];
-		this._counts = counts;
-		this._timeCount = 0;
-		this._whoToPlot = whoToPlot;
-		
-		var colours = [
-			"#e00000",
-			"#00e000",
-			"#0000e0"];
-		
-		this._makeDancer(0, colours[0], [1, 1, 1, 1], 0);
-		this._makeDancer(3, colours[1], [1, 1, 1, 1], 1);
-		this._makeDancer(2, colours[2], [0, 2, 0, 2], 2);
-	},
-	
-	setEndCallback: function(endCallback) {
-		this._endCallback = endCallback;
-	},
-	
-	getFullReelCount: function() {
-		return this._counts[1];
-	},
-	
-	_makeDancer: function(section, colour, countIndexes, who) {
-		var counts = [];
-		countIndexes.forEach(function(countIndex) {
-			counts.push(reel._counts[countIndex]);
-		});
-		this._dancers.push(new Dancer(section, colour, counts, who));
-	},
-	
-	calcAndMove: function() {
-		this._dancers.forEach(function(dancer) {
-			dancer.calcPosition();
-			dancer.updatePosition();
-		});
-		this._path.push(this._dancers[this._whoToPlot].getPosition());
-	},
-	
-	_draw: function() {
-		var canvas = document.getElementById('canvas');
-		var ctx = canvas.getContext('2d');
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		this._drawPath(ctx, this._path);
-		this._dancers.forEach(function(dancer) {
-			dancer.draw(ctx);
-		});
-
-	},
-	
-	_drawPath: function(ctx, path) {
-		ctx.fillStyle = '#a0a0a0';
-		ctx.strokeStyle = '#a0a0a0';
-		path.forEach(function(xy) {
-			ctx.beginPath();
-			ctx.arc(xy.x, xy.y, 3, 0.0, 2.0 * Math.PI);
-			ctx.fill();
-			ctx.stroke();
-		});	
-	},
-	
-	_doFrame: function() {
-		this.calcAndMove();
-		this._draw();	
-		this._timeCount += 1;
-		if (this._timeCount <= this._endTimeCount) {
-			window.requestAnimationFrame(function() {
-				reel._doFrame();
-			});
-		} else {
-			this._endCallback();
-		}
-	},
-	
-	startFrom: function(timeCount, places) {
-		for(var i = 0; i< places.length; i++) {
-			this._dancers[i].place(places[i]);
-		}
-		this._timeCount = timeCount;
-	},
-	render: function() {
-		this._dancers.forEach(function(dancer) {
-			dancer.calcPosition();
-		});
-		this._draw();
-	},
-	animate: function(endTimeCount) {
-		this._endTimeCount = endTimeCount;
-		window.requestAnimationFrame(function() {
-			reel._doFrame();
-		});
-	}
-};*/
 //# sourceMappingURL=reel2.js.map

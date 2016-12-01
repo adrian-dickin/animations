@@ -4,9 +4,9 @@ function Dancer(sectionIndex, colour, speeds, who) {
 	this._colour = colour;
 	this._twoBars = 0;
 	this._who = who;
-	this.radius = 110.0;
+	this.radius = 100.0;
 	this.cx = 140;
-	this.cy = 140;
+	this.cy = 130;
 	
 	this._sections = [
 		{angle: Math.PI, stepSign: 1, centreIndex: 0},

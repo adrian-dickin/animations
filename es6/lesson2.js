@@ -22,10 +22,11 @@ class Lesson {
 			reel.startFrom(this._timeCount, this._places);
 		}
 		this._reel = reel;
-		this._reel.endCallback = () => this.showButtons;
+		this._reel.setEndCallback( () => { this.showButtons(); } );
 	}
 
 	showButtons() {
+		console.log('show buttons');
 		$('#previous').prop('disabled', this._first);
 		$('#play').prop('disabled', false);
 		$('#next').prop('disabled', this._last);

@@ -129,6 +129,7 @@ class Reel {
 		if (this._timeCount <= this._endTimeCount) {
             window.requestAnimationFrame(function() {that._doFrame(); });
 		} else {
+			console.log('end');
 			this._endCallback();
 		}
 	}
@@ -153,7 +154,8 @@ class Reel {
 		console.log('post');
 	}
 	
-	set endCallback(endCallback) {
+	setEndCallback(endCallback) {
+		console.log('set endCallback');
 		this._endCallback = endCallback;
 	}
 };

@@ -5,10 +5,6 @@
 <title>Reel</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" >
 <link rel="stylesheet" href="css/bootstrap-theme.min.css" >
-<script src="vendorjs/jquery-3.1.1.min.js" ></script>
-<script src="vendorjs/bootstrap.min.js" ></script>
-<script src="dist/reel2.js" ></script>
-<script src="dist/lesson2.js" ></script>
 
 <style>
 #canvas {
@@ -50,7 +46,7 @@
 				
 				<div id="lesson2" class="lesson-text">
 					<p>For the reel to work this person must hold back until the other dancer has passed in front, then they must speed up to reach the top in time.</p>
-					<p>Press <i>Play</i> to speed change.</p>
+					<p>Press <i>Play</i> to see the speed change.</p>
 				</div>
 				
 				<div id="lesson3" class="lesson-text">
@@ -82,10 +78,17 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		$(function() {
-			var lessons = new Lessons();
-		});
-	</script>
+	
+<script src="vendorjs/jquery-3.1.1.min.js" ></script>
+<script src="vendorjs/bootstrap.min.js" ></script>
+<script src="js/reel.js" ></script>
+<script src="js/lesson.js" ></script>
+<script src="js/lesson1.js" ></script>
+<script>
+	$(function() {
+		var lessons = new Lessons();
+	});
+</script>
+	
 </body>
 </html>

@@ -3,7 +3,7 @@ class ReelDancer {
 	constructor(colour, speeds, who) {
 		this._speeds = speeds;
 		this._colour = colour;
-		this._twoBars = 0;
+		this._twoBars = 0;   // half a circle
 		this._who = who;
 		this.radius = 100.0;
 		this.cx = 140;
@@ -129,7 +129,6 @@ class Reel {
 		if (this._timeCount <= this._endTimeCount) {
             window.requestAnimationFrame(function() {that._doFrame(); });
 		} else {
-			console.log('end');
 			this._endCallback();
 		}
 	}
@@ -149,9 +148,7 @@ class Reel {
 	animate(endTimeCount) {
 		var that = this;
 		this._endTimeCount = endTimeCount;
-		console.log('pre');
         window.requestAnimationFrame( function() { that._doFrame(); } );
-		console.log('post');
 	}
 	
 	setEndCallback(endCallback) {

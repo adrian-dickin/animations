@@ -92,6 +92,7 @@ class Reel {
 		this._timeCount = 0;
 		this._whoToPlot = whoToPlot;
 		this._endCallback = null;
+		this.	canvasId = 'canvas';
 
 		const red = "#e00000";
 		const green = "#00e000";
@@ -116,7 +117,7 @@ class Reel {
 	}
 
 	_draw() {
-		let canvas = document.getElementById('canvas');
+		let canvas = document.getElementById(this.canvasId);
 		let ctx = canvas.getContext('2d');
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		this._drawPath(ctx, this._path);

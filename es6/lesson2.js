@@ -2,7 +2,7 @@
 class Lessons {
 	constructor() {
 		this._lessons = [
-			new Lesson([115, 100, 85], 0, 400)
+			new Lesson([115, 100, 85], 0, 400,   200, [4,0,2])
 		];
 		
 		this._lessons.forEach(function(lesson, index, lessons) {

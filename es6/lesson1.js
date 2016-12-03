@@ -19,6 +19,7 @@ class Lessons {
 	}
 
 	_play() {
+	console.log(this._currentLesson);
 		$('#play, #prev, #next').prop('disabled', true);
 		this._currentLesson.prep();
 		this._currentLesson.play();

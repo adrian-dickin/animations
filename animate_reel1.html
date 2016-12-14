@@ -27,7 +27,7 @@
 				<div id="lesson0" class="lesson-text">
 					<p>The 3 coloured circles represent 3 dancers in a right shoulder reel. </p>
 					<p>The red 1 dancer is facing the green 2 dancer, the blue 3 dancer is facing the other two.</p>
-					<p>When you play the animation notice how 
+					<p>When you play the animation notice how
 					<ul>
 						<li>the vertical direction alternates, 1 and 3 match while 2 is the opposite</li>
 						<li>they all follow the same path</li>
@@ -37,25 +37,25 @@
 					</p>
 					<p>Press <i>Play</i> to see the path the red dancer takes.</p>
 				</div>
-				
+
 				<div id="lesson1" class="lesson-text">
 					<p>The person at the back of the reel is the one who is looking at the back of the person in front of them.</p>
 					<p>For the reel to work the person at the back of the reel (blue 3 dancer) must change their speed, if they don't then they will collide with red 1.</p>
 					<p>Press <i>Play</i> to see the collision.</p>
 				</div>
-				
+
 				<div id="lesson2" class="lesson-text">
 					<p>For the reel to work this person must hold back until the other dancer has passed in front, then they must speed up to reach the top in time.</p>
 					<p>Press <i>Play</i> to see the speed change.</p>
 				</div>
-				
+
 				<div id="lesson3" class="lesson-text">
 					<p>The 2nd half of the reel is the opposite of the 1st half. Red 1 and Green 2 are still facing each other with blue 3 facing both of them, but the order is reversed.</p>
 					<p>Here Blue 3 must hold back again..</p>
 					<p>Press <i>Play</i> to see the 2nd half of the reel.</p>
 				</div>
 			</div>
-			
+
 			<div class="col-md-6 col-xs-12">
 				<canvas id="canvas" width="480" height="260"></canvas>
 			</div>
@@ -63,12 +63,13 @@
 		<div class="row">
 			<div class="col-md-5 col-sm-12">
 				<div class="well well-sm">
-					<div class="row">
+					<div id="controlsRow" class="row">
 						<div class="col-xs-4">
 							<button id="previous" type="button" class="btn btn-default btn-block btn-lg">Previous</button>
 						</div>
 						<div class="col-xs-4 text-center">
 							<button id="play" type="button" class="btn btn-primary btn-block btn-lg">Play</button>
+							<button id="reset" type="button" class="btn btn-default btn-block btn-lg">Reset</button>
 						</div>
 						<div class="col-xs-4 text-right">
 							<button id="next" type="button" class="btn btn-default btn-block btn-lg">Next</button>
@@ -78,7 +79,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 <script src="vendorjs/jquery-3.1.1.min.js" ></script>
 <script src="vendorjs/bootstrap.min.js" ></script>
 <script src="js/reel.js" ></script>
@@ -89,6 +90,6 @@
 		var lessons = new Lessons();
 	});
 </script>
-	
+
 </body>
 </html>

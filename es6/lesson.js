@@ -39,6 +39,7 @@ class Lesson {
 	}
 }
 
+
 class BaseLessons {
   constructor(lessons) {
     $('#play').click($.proxy(this._play, this));

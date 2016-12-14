@@ -98,12 +98,12 @@ class Reel {
 		const green = "#00e000";
 		const blue = "#0000e0";
 
-		this._makeDancer(0, red, [1, 1, 1, 1], 0);
-		this._makeDancer(3, green, [1, 1, 1, 1], 1);
-		this._makeDancer(2, blue, [0, 2, 0, 2], 2);
+		this.makeDancer(0, red, [1, 1, 1, 1], 0);
+		this.makeDancer(3, green, [1, 1, 1, 1], 1);
+		this.makeDancer(2, blue, [0, 2, 0, 2], 2);
 	}
 
-	_makeDancer(section, colour, countIndexes, who) {
+	makeDancer(section, colour, countIndexes, who) {
 		let counts = countIndexes.map(countIndex => this._counts[countIndex]);
 		this._dancers.push(new RshReelDancer(section, colour, counts, who));
 	}
